@@ -1,0 +1,123 @@
+A51 MACRO ASSEMBLER  DATE                                                                 02/07/2022 16:03:08 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\Date.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE Date.a51 SET(SMALL) DEBUG PRINT(.\Listings\Date.lst) OBJECT(.\Objects\D
+                      ate.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     ORG 0H
+0000 020100            2     LJMP MAIN
+0100                   3     ORG 100H
+0100                   4     MAIN:
+0100 3130              5     CALL DATE
+                       6     
+0130                   7     ORG 130H
+0130                   8             DATE:
+0130 755025            9                     MOV 50H, #25H
+0133 755106           10                     MOV 51H, #06H
+0136 755219           11                     MOV 52H, #19H
+0139 755383           12                     MOV 53H, #83H
+                      13                     
+013C 7950             14                     MOV R1, #50H
+013E 3155             15                     ACALL LOOP1
+0140 314F             16                     ACALL DISPLAY_1111
+0142 3155             17                     ACALL LOOP1
+0144 314F             18                     ACALL DISPLAY_1111
+0146 3155             19                     ACALL LOOP1
+0148 3155             20                     ACALL LOOP1
+014A 314F             21                     ACALL DISPLAY_1111
+                      22                     
+014C 020130           23             LJMP DATE
+014F                  24             DISPLAY_1111:
+014F 7590FF           25                     MOV P1, #255
+0152 3168             26                     DELAY1: ACALL DELAY_1S
+0154 22               27                     RET
+                      28                     
+0155                  29             LOOP1:
+0155 E7               30                     MOV A, @R1
+0156 315A             31                     ACALL LOOP
+0158 09               32                     INC R1
+0159 22               33                     RET
+                      34                             
+015A                  35             LOOP:
+015A C002             36                     PUSH 02H
+015C 7A02             37                     MOV R2, #2
+015E F590             38                     DISPLAY: MOV P1, A
+0160 3168             39                     DELAY: ACALL DELAY_1S
+0162 C4               40                     SWAP A
+0163 DAF9             41                     DJNZ R2, DISPLAY
+0165 D002             42                     POP 02H
+0167 22               43                     RET
+                      44                     
+0168                  45             delay_1s:
+0168 C000             46                     push 00h
+016A 7805             47                     mov r0, #5
+016C 3173             48                     h4: acall delay_200ms
+016E D8FC             49                     djnz r0, h4
+0170 D000             50                     pop 00h
+0172 22               51                     ret
+                      52                     
+0173                  53             delay_200ms:
+0173 C000             54                     push 00h
+0175 78C8             55                     mov r0, #200
+0177 317E             56                     h3: acall delay_1ms
+0179 D8FC             57                     djnz r0, h3
+A51 MACRO ASSEMBLER  DATE                                                                 02/07/2022 16:03:08 PAGE     2
+
+017B D000             58                     pop 00h
+017D 22               59                     ret
+                      60             
+017E                  61             delay_1ms:
+                      62             
+                      63             
+017E C000             64                     push 00h  
+0180 7804             65                     mov r0, #4  
+0182 3189             66                     h2: acall delay_250us  
+0184 D8FC             67                     djnz r0, h2 
+0186 D000             68                     pop 00h 
+0188 22               69                     ret 
+                      70                     
+0189                  71             delay_250us:
+0189 C000             72                     push 00h 
+018B 78F4             73                     mov r0, #244 
+018D D8FE             74                     h1: djnz r0, h1 
+018F D000             75                     pop 00h 
+0191 22               76                     ret 
+                      77             
+0192 22               78             RET
+                      79     END
+                                     
+A51 MACRO ASSEMBLER  DATE                                                                 02/07/2022 16:03:08 PAGE     3
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+DATE . . . . . . .  C ADDR   0130H   A   
+DELAY. . . . . . .  C ADDR   0160H   A   
+DELAY1 . . . . . .  C ADDR   0152H   A   
+DELAY_1MS. . . . .  C ADDR   017EH   A   
+DELAY_1S . . . . .  C ADDR   0168H   A   
+DELAY_200MS. . . .  C ADDR   0173H   A   
+DELAY_250US. . . .  C ADDR   0189H   A   
+DISPLAY. . . . . .  C ADDR   015EH   A   
+DISPLAY_1111 . . .  C ADDR   014FH   A   
+H1 . . . . . . . .  C ADDR   018DH   A   
+H2 . . . . . . . .  C ADDR   0182H   A   
+H3 . . . . . . . .  C ADDR   0177H   A   
+H4 . . . . . . . .  C ADDR   016CH   A   
+LOOP . . . . . . .  C ADDR   015AH   A   
+LOOP1. . . . . . .  C ADDR   0155H   A   
+MAIN . . . . . . .  C ADDR   0100H   A   
+P1 . . . . . . . .  D ADDR   0090H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

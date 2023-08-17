@@ -1,0 +1,72 @@
+A51 MACRO ASSEMBLER  2                                                                    02/14/2022 01:07:20 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\2.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE 2.a51 SET(SMALL) DEBUG PRINT(.\Listings\2.lst) OBJECT(.\Objects\2.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     ORG 0H
+0000 020100            2     LJMP MAIN
+0100                   3     ORG 100H
+0100                   4     MAIN:
+0100 802E              5     SJMP ASCII
+0102 80FE              6     HERE: SJMP HERE
+0130                   7     ORG 130H
+0130                   8             ASCII:
+0130 75309B            9             MOV 30H, #9BH
+                      10             
+0133 7A02             11             MOV R2, #2
+0135 E530             12             MOV A, 30H
+0137 54F0             13             ANL A, #240  
+0139 C4               14             SWAP A
+013A 7960             15             MOV R1, #60H
+013C 3145             16             CALL COMPARE
+                      17             
+013E                  18             HERE1:
+013E 09               19             INC R1
+013F E530             20             MOV A, 30H
+0141 540F             21             ANL A, #15  
+0143 3145             22             CALL COMPARE
+                      23             
+                      24             
+0145                  25             COMPARE:
+0145 B40A00           26             CJNE A, #10, NUMB  
+                      27                     
+0148                  28                     NUMB:
+0148 5007             29                     JNC LETTER
+014A 2430             30                     ADD A,#30H
+014C F7               31                     MOV @R1,A
+014D DAEF             32                     DJNZ R2, HERE1
+014F 80B1             33                     SJMP HERE
+                      34                     
+0151                  35                     LETTER:
+0151 2437             36                     ADD A, #37H
+0153 F7               37                     MOV @R1,A
+0154 DAE8             38                     DJNZ R2, HERE1
+0156 80AA             39                     SJMP HERE
+                      40                             
+                      41     END
+                                     
+A51 MACRO ASSEMBLER  2                                                                    02/14/2022 01:07:20 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+ASCII. . . . . . .  C ADDR   0130H   A   
+COMPARE. . . . . .  C ADDR   0145H   A   
+HERE . . . . . . .  C ADDR   0102H   A   
+HERE1. . . . . . .  C ADDR   013EH   A   
+LETTER . . . . . .  C ADDR   0151H   A   
+MAIN . . . . . . .  C ADDR   0100H   A   
+NUMB . . . . . . .  C ADDR   0148H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

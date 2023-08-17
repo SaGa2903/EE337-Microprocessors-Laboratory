@@ -1,0 +1,110 @@
+A51 MACRO ASSEMBLER  LAB6                                                                 03/07/2022 14:40:07 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\lab6.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE lab6.a51 SET(SMALL) DEBUG PRINT(.\Listings\lab6.lst) OBJECT(.\Objects\l
+                      ab6.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     ORG 0H
+0000 020100            2     LJMP MAIN
+0100                   3     ORG 100H
+                       4     
+0100                   5     MAIN:
+                       6     
+0100 7590FF            7     MOV P1, #0FFH
+0103 753002            8     MOV 30H, #2
+                       9     
+                      10     
+0106 753284           11     MOV 32H, #84H
+0109 753380           12     MOV 33H, #80H
+                      13     
+010C                  14     TWOS:
+010C C3               15     CLR C
+010D 7400             16     MOV A, #0H
+010F 9533             17     SUBB A, 33H
+0111 C3               18     CLR C
+0112 F535             19     MOV 35H , A
+0114 74FF             20     MOV A, #0FFH
+0116 9532             21     SUBB A, 32H
+0118 F534             22     MOV 34H, A
+                      23     
+                      24     
+011A                  25     HERE:
+011A AA30             26     MOV R2, 30H
+                      27     
+011C 312A             28     LOOP1: ACALL DELAY_1
+011E DAFC             29     C_T: DJNZ R2, LOOP1
+                      30     
+0120 B294             31     CPL P1.4
+0122 B295             32     CPL P1.5
+0124 B296             33     CPL P1.6
+0126 B297             34     CPL P1.7
+                      35     
+0128 80F0             36     SJMP HERE
+                      37     
+012A                  38     DELAY_1:
+012A 7B1E             39     MOV R3, #30
+012C 3146             40     LOOP: ACALL DELAY_30
+012E DBFC             41     C_14: DJNZ R3, LOOP
+0130 3133             42     ACALL DELAY_33920
+0132 22               43     RET
+                      44     
+0133                  45     DELAY_33920:
+                      46     
+0133 758901           47     MOV TMOD, #00000001B  
+0136 85358A           48     MOV TL0, 35H
+0139 85348C           49     MOV TH0, 34H
+013C D28C             50     SETB TR0
+013E 308DFD           51     AGAIN: JNB TF0, AGAIN
+0141 C28C             52     CLR TR0
+0143 C28D             53     CLR TF0
+0145 22               54     RET
+                      55     
+0146                  56     DELAY_30:
+0146 758901           57     MOV TMOD, #00000001B  
+A51 MACRO ASSEMBLER  LAB6                                                                 03/07/2022 14:40:07 PAGE     2
+
+0149 758A00           58     MOV TL0, #0
+014C 758C00           59     MOV TH0, #0
+014F D28C             60     SETB TR0
+0151 308DFD           61     AGAIN1: JNB TF0, AGAIN1
+0154 C28C             62     CLR TR0
+0156 C28D             63     CLR TF0
+0158 22               64     RET
+                      65     
+                      66     END
+A51 MACRO ASSEMBLER  LAB6                                                                 03/07/2022 14:40:07 PAGE     3
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+AGAIN. . . . . . .  C ADDR   013EH   A   
+AGAIN1 . . . . . .  C ADDR   0151H   A   
+C_14 . . . . . . .  C ADDR   012EH   A   
+C_T. . . . . . . .  C ADDR   011EH   A   
+DELAY_1. . . . . .  C ADDR   012AH   A   
+DELAY_30 . . . . .  C ADDR   0146H   A   
+DELAY_33920. . . .  C ADDR   0133H   A   
+HERE . . . . . . .  C ADDR   011AH   A   
+LOOP . . . . . . .  C ADDR   012CH   A   
+LOOP1. . . . . . .  C ADDR   011CH   A   
+MAIN . . . . . . .  C ADDR   0100H   A   
+P1 . . . . . . . .  D ADDR   0090H   A   
+TF0. . . . . . . .  B ADDR   0088H.5 A   
+TH0. . . . . . . .  D ADDR   008CH   A   
+TL0. . . . . . . .  D ADDR   008AH   A   
+TMOD . . . . . . .  D ADDR   0089H   A   
+TR0. . . . . . . .  B ADDR   0088H.4 A   
+TWOS . . . . . . .  C ADDR   010CH   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

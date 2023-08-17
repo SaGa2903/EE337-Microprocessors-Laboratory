@@ -1,0 +1,100 @@
+A51 MACRO ASSEMBLER  Q1                                                                   04/02/2022 15:05:07 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\q1.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE q1.a51 SET(SMALL) DEBUG PRINT(.\Listings\q1.lst) OBJECT(.\Objects\q1.ob
+                      j) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     ORG 0H
+0000 020100            2     LJMP MAIN
+0100                   3     ORG 100H
+0100                   4     MAIN:
+0100 3130              5     CALL MATRIX
+                       6     
+0102 80FE              7     HERE: SJMP HERE
+0130                   8     ORG 130H
+                       9             
+0130                  10             MATRIX:
+                      11             
+0130 7831             12             MOV R0, #31H
+                      13     
+0132 E530             14             MOV A, 30H  
+0134 8530F0           15             MOV B, 30H
+0137 A4               16             MUL AB  
+0138 FA               17             MOV R2, A  
+                      18     
+                      19             
+0139 75F031           20             MOV B, #31H
+013C 25F0             21             ADD A, B
+013E F9               22             MOV R1, A  
+013F FB               23             MOV R3, A
+                      24             
+0140 E530             25             MOV A, 30H  
+0142 8530F0           26             MOV B, 30H
+0145 A4               27             MUL AB  
+0146 89F0             28             MOV B, R1
+0148 25F0             29             ADD A, B
+014A F529             30             MOV 29H, A
+                      31             
+014C                  32             ADD_2:
+014C E6               33             MOV A, @R0
+014D 87F0             34             MOV B, @R1
+014F 25F0             35             ADD A,B
+                      36             
+0151 C000             37             PUSH 0
+0153 A829             38             MOV R0, 29H
+0155 F6               39             MOV @R0,A
+0156 E529             40             MOV A, 29H
+0158 2401             41             ADD A, #1
+015A F529             42             MOV 29H, A
+015C D000             43             POP 0
+                      44             
+015E 08               45             INC R0
+015F 09               46             INC R1
+                      47             
+0160 DAEA             48             DJNZ R2, ADD_2
+0162 22               49             RET
+                      50             
+                      51             
+                      52     
+                      53     
+                      54     
+                      55     
+                      56     
+                      57     
+A51 MACRO ASSEMBLER  Q1                                                                   04/02/2022 15:05:07 PAGE     2
+
+                      58     
+                      59     
+                      60     
+                      61     
+                      62     
+                      63     
+                      64     
+                      65     
+                      66     
+                      67     
+                      68     
+                      69     END
+A51 MACRO ASSEMBLER  Q1                                                                   04/02/2022 15:05:07 PAGE     3
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+ADD_2. . . . . . .  C ADDR   014CH   A   
+B. . . . . . . . .  D ADDR   00F0H   A   
+HERE . . . . . . .  C ADDR   0102H   A   
+MAIN . . . . . . .  C ADDR   0100H   A   
+MATRIX . . . . . .  C ADDR   0130H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

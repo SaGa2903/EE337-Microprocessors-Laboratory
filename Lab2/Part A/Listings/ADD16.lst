@@ -1,0 +1,74 @@
+A51 MACRO ASSEMBLER  ADD16                                                                01/24/2022 15:14:45 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\ADD16.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE ADD16.a51 SET(SMALL) DEBUG PRINT(.\Listings\ADD16.lst) OBJECT(.\Objects
+                      \ADD16.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     ORG 0H
+0000 020100            2     LJMP MAIN
+0100                   3     ORG 100H
+0100                   4     MAIN:
+0100 3130              5     CALL ADD16
+0102 80FE              6     HERE: SJMP HERE
+0130                   7     ORG 130H
+                       8             
+0130                   9             ADD16:
+                      10             
+                      11             
+                      12             
+                      13     
+                      14     
+                      15     
+                      16             
+                      17             
+0130 7570FF           18             MOV 70H, #0FFH
+0133 7571FF           19             MOV 71H, #0FFH
+0136 7572FF           20             MOV 72H, #0FFH
+0139 7573FF           21             MOV 73H, #0FFH
+                      22             
+                      23             
+013C 757080           24             MOV 70H, #80H
+013F 75717B           25             MOV 71H, #7BH
+0142 75727B           26             MOV 72H, #7BH
+0145 757323           27             MOV 73H, #23H
+                      28             
+0148 E571             29             MOV A, 71H
+014A 8573F0           30             MOV B, 73H
+                      31             
+014D 25F0             32             ADD A,B
+014F F576             33             MOV 76H, A
+                      34             
+0151 E570             35             MOV A, 70H
+0153 8572F0           36             MOV B, 72H
+                      37             
+0156 35F0             38             ADDC A, B
+0158 F575             39             MOV 75H, A
+                      40             
+015A E4               41             CLR A
+015B 3400             42             ADDC A, #00H
+015D F574             43             MOV 74H, A
+                      44             
+015F 22               45     RET
+                      46     END
+A51 MACRO ASSEMBLER  ADD16                                                                01/24/2022 15:14:45 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+ADD16. . . . . . .  C ADDR   0130H   A   
+B. . . . . . . . .  D ADDR   00F0H   A   
+HERE . . . . . . .  C ADDR   0102H   A   
+MAIN . . . . . . .  C ADDR   0100H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

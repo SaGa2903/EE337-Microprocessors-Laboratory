@@ -1,0 +1,112 @@
+A51 MACRO ASSEMBLER  BINARYSEARCH                                                         01/30/2022 01:10:46 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\BinarySearch.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE BinarySearch.a51 SET(SMALL) DEBUG PRINT(.\Listings\BinarySearch.lst) OB
+                      JECT(.\Objects\BinarySearch.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     ORG 0H
+0000 020100            2     LJMP MAIN
+0100                   3     ORG 100H
+0100                   4     MAIN:
+0100 3130              5     CALL SEARCH
+0102 80FE              6     HERE: SJMP HERE
+0130                   7     ORG 130H
+0130                   8     SEARCH:
+                       9     
+0130 C230             10     CLR 30H
+0132 C231             11     CLR 31H
+0134 C232             12     CLR 32H
+0136 C233             13     CLR 33H
+0138 753090           14     MOV 30H, #90H  
+013B 753101           15     MOV 31H, #1  
+013E 753207           16     MOV 32H, #7  
+0141 75330E           17     MOV 33H, #0EH  
+                      18     
+                      19     
+                      20     
+                      21      
+0144 AA30             22     MOV R2, 30H  
+0146 E531             23     MOV A, 31H  
+0148 60B8             24     JZ HERE  
+014A 2A               25     ADD A, R2
+014B FC               26     MOV R4,A 
+014C 1C               27     DEC R4 
+                      28     
+014D EC               29     MOV A, R4 
+014E C3               30     CLR C
+014F 9A               31     SUBB A, R2
+0150 75F002           32     MOV B, #2H
+0153 84               33     DIV AB  
+0154 2530             34     ADD A, 30H
+0156 F9               35     MOV R1, A 
+                      36     
+                      37     
+0157                  38     COMPARE: 
+0157 E7               39     MOV A, @R1
+0158 B53204           40     CJNE A,32H, NOTEQUAL  
+015B 8933             41     MOV 33H, R1  
+015D 80A3             42     SJMP HERE  
+                      43     
+015F                  44     NOTEQUAL:
+015F 4009             45     JC GREATER  
+                      46     
+0161 AC01             47     MOV R4, 1H  
+0163 1C               48     DEC R4  
+0164 E9               49     MOV A, R1
+0165 B5020B           50     CJNE A, 2H, MIDDLE
+0168 8098             51     SJMP HERE
+                      52     
+                      53     
+016A                  54     GREATER:
+016A AA01             55     MOV R2, 1H  
+016C 0A               56     INC R2  
+016D E9               57     MOV A, R1
+A51 MACRO ASSEMBLER  BINARYSEARCH                                                         01/30/2022 01:10:46 PAGE     2
+
+016E B50402           58     CJNE A, 4H, MIDDLE
+0171 808F             59     SJMP HERE
+                      60     
+                      61     
+0173                  62     MIDDLE:
+                      63     
+                      64     
+                      65     
+                      66     
+0173 EC               67     MOV A, R4
+0174 C3               68     CLR C
+0175 9A               69     SUBB A, R2
+0176 75F002           70     MOV B, #2H
+0179 84               71     DIV AB
+017A 2A               72     ADD A, R2
+017B F9               73     MOV R1, A
+017C 80D9             74     SJMP COMPARE
+                      75     
+                      76      
+017E 22               77     RET
+                      78     END
+A51 MACRO ASSEMBLER  BINARYSEARCH                                                         01/30/2022 01:10:46 PAGE     3
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+B. . . . . . . . .  D ADDR   00F0H   A   
+COMPARE. . . . . .  C ADDR   0157H   A   
+GREATER. . . . . .  C ADDR   016AH   A   
+HERE . . . . . . .  C ADDR   0102H   A   
+MAIN . . . . . . .  C ADDR   0100H   A   
+MIDDLE . . . . . .  C ADDR   0173H   A   
+NOTEQUAL . . . . .  C ADDR   015FH   A   
+SEARCH . . . . . .  C ADDR   0130H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)
